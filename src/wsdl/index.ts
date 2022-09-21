@@ -443,7 +443,7 @@ export class WSDL {
         } else if (name === 'bool' || name === 'boolean') {
           value = text.toLowerCase() === 'true' || text === '1';
         } else if (name === 'dateTime' || name === 'date') {
-          value = new Date(text);
+          value = text;
         } else {
           if (this.options.preserveWhitespace) {
             text = originalText;
