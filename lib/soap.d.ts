@@ -16,3 +16,12 @@ export declare function createClient(url: string, options: IOptions, callback: C
 export declare function createClientAsync(url: string, options?: IOptions, endpoint?: string): Promise<Client>;
 export declare function listen(server: ServerType, path: string | RegExp, services: IServices, wsdl: string, callback?: (err: any, res: any) => void): Server;
 export declare function listen(server: ServerType, options: IServerOptions): Server;
+export interface IListenV2Values {
+    server: ServerType;
+    path: string | RegExp;
+    services: IServices;
+    wsdl: string;
+    forceSoap12Headers: boolean;
+    callback?: (err: any, res: any) => void;
+}
+export declare function listenV2(values: IListenV2Values): Server;

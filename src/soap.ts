@@ -128,3 +128,29 @@ export function listen(server: ServerType, p2: string | RegExp | IServerOptions,
   const wsdl = new WSDL(xml || services, uri, options);
   return new Server(server, path, services, wsdl, options);
 }
+
+export interface IListenV2Values {
+  server: ServerType;
+  path: string | RegExp;
+  services: IServices;
+  wsdl: string;
+  forceSoap12Headers: boolean;
+  callback?: (err: any, res: any) => void;
+}
+
+export function listenV2(values: IListenV2Values): Server {
+  const options: IServerOptions = {
+    path: values.path,
+    services: values.services,
+    callback: values.callback,
+    forceSoap12Headers: values.forceSoap12Headers,
+  };
+
+  return new Server(
+    values.server,
+    values.path,
+    values.services,
+    new WSDL(values.wsdl, '', options),
+    options,
+  );
+}
