@@ -11,8 +11,8 @@ export interface IExOptions {
 }
 
 export interface IHttpClient {
-  request(rurl: string, data: any, callback: (error: any, res?: any, body?: any) => any, exheaders?: IHeaders, exoptions?: IExOptions, caller?): req.AxiosPromise;
-  requestStream?(rurl: string, data: any, exheaders?: IHeaders, exoptions?: IExOptions, caller?): req.AxiosPromise<ReadStream>;
+  request(rurl: string, data: any, callback: (error: any, res?: any, body?: any) => any, exheaders?: IHeaders, exoptions?: IExOptions, caller?: any): req.AxiosPromise;
+  requestStream?(rurl: string, data: any, exheaders?: IHeaders, exoptions?: IExOptions, caller?: any): req.AxiosPromise<ReadStream>;
 }
 
 /** @deprecated use SoapMethod */
@@ -64,7 +64,7 @@ export interface ISecurity {
   addOptions?(options: any): void;
   toXML?(): string;
   addHeaders?(headers: IHeaders): void;
-  postProcess?(xml, envelopeKey): string;
+  postProcess?(xml: any, envelopeKey: any): string;
 }
 
 export interface IServicePort {
@@ -133,7 +133,7 @@ export interface IOptions extends IWsdlBaseOptions {
   /** if your wsdl operations contains names with Async suffix, you will need to override the default promise suffix to a custom one, default: Async. */
   overridePromiseSuffix?: string;
   /** @internal */
-  WSDL_CACHE?;
+  WSDL_CACHE?: any;
   /** handle MTOM soapAttachments in response */
   parseReponseAttachments?: boolean;
 }
